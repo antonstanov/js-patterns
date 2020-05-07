@@ -1,0 +1,46 @@
+/*
+Определяем семейство некоторых алгоритмов, которое наследует объекты в неизменяемом порядке
+
+Создаем оболочку, которая взаимодействует с различными стратегиями через один интерфеейс
+ */
+
+class Vehicle {
+	timeTaken;
+
+	travelTime() {
+		return this.timeTaken;
+	}
+}
+
+class Bus extends Vehicle {
+	constructor() {
+		super();
+		this.timeTaken = 10
+	}
+}
+
+class Car extends Vehicle {
+	constructor() {
+		super();
+		this.timeTaken = 3
+	}
+}
+
+class Taxi extends Vehicle {
+	constructor() {
+		super();
+		this.timeTaken = 5
+	}
+}
+
+class Commute {
+	travel(transport){
+		return transport.travelTime();
+	}
+}
+
+const commute = new Commute();
+
+console.log(commute.travel(new Taxi));
+console.log(commute.travel(new Car));
+console.log(commute.travel(new Bus));
